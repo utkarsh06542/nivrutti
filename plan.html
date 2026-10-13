@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your details — Nivrutti</title>
+<meta name="description" content="Enter your retirement details step by step.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="plan">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">Nivrutti <small>retirement money planner</small></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main"><a href="index.html">Home</a><a href="results.html" aria-current="page">My plan</a><a href="calculators.html">Calculators</a><a href="guides.html">How-to guides</a><a href="checklist.html">Checklist</a><a href="products.html">Products</a><a href="glossary.html">Word meanings</a></nav>
+    <div class="tools" role="group" aria-label="Text size">
+      <button class="tbtn" data-fs="100" aria-pressed="true" aria-label="Normal text">A</button>
+      <button class="tbtn" data-fs="112.5" aria-pressed="false" aria-label="Larger text">A+</button>
+      <button class="tbtn" data-fs="125" aria-pressed="false" aria-label="Largest text">A++</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="wrap page-head center-head">
+  <h1>Your details</h1>
+  <p class="lede">One step at a time. Your answers are saved on this device only.</p>
+</div>
+<div class="wrap">
+  <form class="panel wizard" id="form" onsubmit="return false" aria-label="Your details">
+    <div class="stepcount" id="stepcount"></div>
+    <div class="progressbar"><i id="progress"></i></div>
+    <div class="modebar">
+        <div class="seg" role="radiogroup" aria-label="How detailed">
+          <label><input type="radio" name="mode" value="quick" data-k="mode"><span>Quick plan</span></label>
+          <label><input type="radio" name="mode" value="detail" data-k="mode"><span>Detailed plan</span></label>
+        </div>
+      </div>
+      
+    <fieldset class="wstep" data-step="1">
+        <legend>Which describes you best?</legend>
+        <p class="intro">This fills in typical numbers for someone like you. You can change everything in the next steps.</p>
+        <div class="personas" id="personas" role="group" aria-label="Type of retiree"></div>
+      </fieldset>
+      <fieldset class="wstep" data-step="2">
+        <legend>About you</legend>
+        <p class="intro">Your age decides which schemes you can use and how long the money must last.</p>
+        <div class="row2">
+          <div class="field"><label for="age">Your age</label><input type="number" id="age" data-k="age" min="30" max="95"></div>
+          <div class="field" data-show="detail"><span class="lbl">You are</span><div class="seg"><label><input type="radio" name="gender" value="m" data-k="gender"><span>Man</span></label><label><input type="radio" name="gender" value="f" data-k="gender"><span>Woman</span></label></div></div>
+        </div>
+        <label class="toggle" data-show="vrs"><input type="checkbox" data-k="vrs"> I took voluntary or superannuation retirement after 55 and will invest within one month of getting my retirement money (makes me eligible for SCSS now)</label>
+        <div class="field"><span class="lbl">Spouse</span>
+          <div class="seg"><label><input type="radio" name="spouse" value="1" data-k="spouse"><span>Married</span></label><label><input type="radio" name="spouse" value="0" data-k="spouse"><span>Single or widowed</span></label></div>
+        </div>
+        <div class="row2" data-need="spouse">
+          <div class="field"><label for="sAge">Spouse's age</label><input type="number" id="sAge" data-k="sAge" min="25" max="100"></div>
+          <div class="field" data-show="detail"><span class="lbl">Spouse is</span><div class="seg"><label><input type="radio" name="sGender" value="m" data-k="sGender"><span>Man</span></label><label><input type="radio" name="sGender" value="f" data-k="sGender"><span>Woman</span></label></div></div>
+        </div>
+        <div data-show="detail">
+          <div class="field"><span class="lbl">Your health today</span><div class="seg"><label><input type="radio" name="health" value="good" data-k="health"><span>Good</span></label><label><input type="radio" name="health" value="avg" data-k="health"><span>Average</span></label><label><input type="radio" name="health" value="poor" data-k="health"><span>Serious illness</span></label></div></div>
+          <label class="toggle"><input type="checkbox" data-k="smoker"> I smoke or use tobacco</label>
+          <label class="toggle"><input type="checkbox" data-k="parents85"> A parent lived past 85</label>
+        </div>
+        <div class="field"><label for="planAge">Plan until age</label><input type="number" id="planAge" data-k="planAge" min="75" max="105"><span class="hint">The plan lasts until the younger of you reaches this age.</span><div class="suggest" id="lifeSuggest"></div></div>
+      </fieldset>
+
+      <fieldset class="wstep" data-step="3" hidden>
+        <legend>Money coming in</legend>
+        <p class="intro">Everything you receive regularly, before touching savings. Enter monthly amounts.</p>
+        <div class="field"><label for="pension">Your pension per month</label><div class="money"><input type="number" id="pension" data-k="pension" min="0" step="500"></div><span class="hint" id="pensionHint">Include EPS, government or company pension, or an annuity you already have</span></div>
+        <label class="toggle"><input type="checkbox" data-k="pensionDA"> Pension rises every year with dearness relief (DA)</label>
+        <div class="field" data-need="spouse"><label for="sPension">Spouse's own pension per month</label><div class="money"><input type="number" id="sPension" data-k="sPension" min="0" step="500"></div></div>
+        <div class="field" data-need="spouse" data-show="detail govt defence private"><label for="survPct">If you die, your spouse gets this % of your pension</label><input type="number" id="survPct" data-k="survPct" min="0" max="100"><span class="hint">Central government family pension is often about 60% of your pension; EPS widow pension is 50%; most private pensions pay 0</span></div>
+        <div class="field"><label for="rent">Rent received per month</label><div class="money"><input type="number" id="rent" data-k="rent" min="0" step="500"></div></div>
+        <div class="row2" data-show="detail fire">
+          <div class="field"><label for="work">Part-time or consulting income</label><div class="money"><input type="number" id="work" data-k="work" min="0" step="1000"></div></div>
+          <div class="field"><label for="workUntil">Until age</label><input type="number" id="workUntil" data-k="workUntil" min="30" max="85"></div>
+        </div>
+        <div class="row2" data-show="detail fire">
+          <div class="field"><label for="laterInc">Monthly income starting later</label><div class="money"><input type="number" id="laterInc" data-k="laterInc" min="0" step="500"></div><span class="hint">EPS pension, NPS annuity, spouse's pension</span></div>
+          <div class="field"><label for="laterIncAge">From your age</label><input type="number" id="laterIncAge" data-k="laterIncAge" min="30" max="90"></div>
+        </div>
+        <div class="row2" data-show="detail fire">
+          <div class="field"><label for="laterL">Lump sum arriving later</label><div class="money lakh"><input type="number" id="laterL" data-k="laterL" min="0"></div><span class="hint">EPF, PPF or NPS maturity, an FD, sale of a plot</span></div>
+          <div class="field"><label for="laterAge">At your age</label><input type="number" id="laterAge" data-k="laterAge" min="30" max="90"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="wstep" data-step="4" hidden>
+        <legend>Money going out</legend>
+        <p class="intro">Medical costs rise faster than other prices, so the detailed plan treats them separately.</p>
+        <div class="field" data-hide="detail"><label for="exp">Monthly household expenses</label><div class="money"><input type="number" id="exp" data-k="exp" min="5000" step="1000"></div><span class="hint">Groceries, bills, medicines, help at home, travel — everything</span></div>
+        <div data-show="detail">
+          <div class="row2">
+            <div class="field"><label for="ess">Essentials</label><div class="money"><input type="number" id="ess" data-k="ess" min="0" step="1000"></div><span class="hint">Food, bills, transport</span></div>
+            <div class="field"><label for="life">Lifestyle and travel</label><div class="money"><input type="number" id="life" data-k="life" min="0" step="1000"></div><span class="hint">Eases after 75</span></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="med">Medicines and doctors</label><div class="money"><input type="number" id="med" data-k="med" min="0" step="500"></div><span class="hint">Not covered by insurance</span></div>
+            <div class="field"><label for="help">Household help</label><div class="money"><input type="number" id="help" data-k="help" min="0" step="500"></div><span class="hint">Cook, maid, driver</span></div>
+          </div>
+          <label class="toggle"><input type="checkbox" data-k="careOn"> Plan for a caregiver or assisted living in later years</label>
+          <div class="row2" data-need="care">
+            <div class="field"><label for="careFrom">From age</label><input type="number" id="careFrom" data-k="careFrom" min="60" max="100"></div>
+            <div class="field"><label for="careCost">Extra per month, today's ₹</label><div class="money"><input type="number" id="careCost" data-k="careCost" min="0" step="1000"></div></div>
+          </div>
+        </div>
+        <div class="field"><span class="lbl">Big expenses ahead</span><span class="hint" style="margin:0 0 8px">Name, cost in today's rupees, and in how many years</span>
+          <div class="row3" style="margin-bottom:8px"><input type="text" data-k="g1n" aria-label="First expense name" placeholder="e.g. Daughter's wedding"><div class="money lakh"><input type="number" data-k="g1L" aria-label="First expense amount in lakh" min="0"></div><input type="number" data-k="g1Yr" aria-label="First expense in years" min="1" max="40"></div>
+          <div data-show="detail">
+            <div class="row3" style="margin-bottom:8px"><input type="text" data-k="g2n" aria-label="Second expense name" placeholder="e.g. Car"><div class="money lakh"><input type="number" data-k="g2L" aria-label="Second expense amount in lakh" min="0"></div><input type="number" data-k="g2Yr" aria-label="Second expense in years" min="1" max="40"></div>
+            <div class="row3"><input type="text" data-k="g3n" aria-label="Third expense name" placeholder="e.g. Home repair"><div class="money lakh"><input type="number" data-k="g3L" aria-label="Third expense amount in lakh" min="0"></div><input type="number" data-k="g3Yr" aria-label="Third expense in years" min="1" max="40"></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="wstep" data-step="5" hidden>
+        <legend>Savings and safety net</legend>
+        <p class="intro">Count FDs, mutual funds, shares, PPF, EPF, gratuity and cash you can invest. Leave out your home and jewellery you won't sell.</p>
+        <div class="field"><label for="corpusL">Savings you can invest</label><div class="money lakh"><input type="number" id="corpusL" data-k="corpusL" min="1" step="5"></div><span class="hint" id="corpusHint"></span></div>
+        <div class="field" data-need="spouse" data-show="detail"><label for="spouseOwnL">Of this, your spouse's own money</label><div class="money lakh"><input type="number" id="spouseOwnL" data-k="spouseOwnL" min="0"></div><span class="hint">Only money your spouse earned or inherited. Money you give your spouse is still taxed as your income.</span></div>
+        <div class="field"><span class="lbl">Do you own the home you live in?</span>
+          <div class="seg"><label><input type="radio" name="home" value="1" data-k="home"><span>Yes</span></label><label><input type="radio" name="home" value="0" data-k="home"><span>No, renting</span></label></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="cover">Health cover for the family</label><div class="money lakh"><input type="number" id="cover" data-k="cover" min="0"></div><span class="hint">Base plus top-up. Enter 10 for CGHS or ECHS.</span></div>
+          <div class="field"><label for="premium">Yearly premium</label><div class="money"><input type="number" id="premium" data-k="premium" min="0" step="1000"></div></div>
+        </div>
+        <label class="toggle" data-show="detail"><input type="checkbox" data-k="snDep"> Someone in the family with special needs depends on us for life</label>
+      </fieldset>
+
+      <fieldset class="wstep qlist" data-step="6" hidden>
+        <legend>Comfort with ups and downs</legend>
+        <p class="intro">There are no right answers. Answer what you would actually do.</p>
+        <div class="field"><span class="lbl" id="r6label">Your savings fall by a quarter and stay low for two years. You would…</span>
+          <div class="seg">
+            <label><input type="radio" name="r6" value="0" data-k="r6"><span>Lose sleep over it</span></label>
+            <label><input type="radio" name="r6" value="1" data-k="r6"><span>Feel uneasy, but manage</span></label>
+            <label><input type="radio" name="r6" value="2" data-k="r6"><span>Accept it as part of investing</span></label>
+          </div></div>
+        <div class="field"><span class="lbl">In a bad year your investments drop 20%. You would…</span>
+          <div class="seg">
+            <label><input type="radio" name="r1" value="0" data-k="r1"><span>Sell to stop further loss</span></label>
+            <label><input type="radio" name="r1" value="1" data-k="r1"><span>Worry, but wait</span></label>
+            <label><input type="radio" name="r1" value="2" data-k="r1"><span>Stay calm</span></label>
+            <label><input type="radio" name="r1" value="3" data-k="r1"><span>Invest more while prices are low</span></label>
+          </div></div>
+        <div class="field"><span class="lbl">When markets crashed in March 2020, what did you actually do?</span>
+          <div class="seg">
+            <label><input type="radio" name="r2" value="0" data-k="r2"><span>Sold some or all</span></label>
+            <label><input type="radio" name="r2" value="1" data-k="r2"><span>I had no market investments</span></label>
+            <label><input type="radio" name="r2" value="2" data-k="r2"><span>Held on</span></label>
+            <label><input type="radio" name="r2" value="3" data-k="r2"><span>Bought more</span></label>
+          </div></div>
+        <div class="field"><span class="lbl">Which would you pick for ₹10 lakh?</span>
+          <div class="seg">
+            <label><input type="radio" name="r3" value="0" data-k="r3"><span>₹10 L for certain</span></label>
+            <label><input type="radio" name="r3" value="1" data-k="r3"><span>Equal chance of ₹12 L or ₹9 L</span></label>
+            <label><input type="radio" name="r3" value="2" data-k="r3"><span>Equal chance of ₹15 L or ₹7.5 L</span></label>
+            <label><input type="radio" name="r3" value="3" data-k="r3"><span>Equal chance of ₹20 L or ₹6 L</span></label>
+          </div></div>
+        <div class="field"><span class="lbl">Have you held mutual funds or shares?</span>
+          <div class="seg">
+            <label><input type="radio" name="r4" value="0" data-k="r4"><span>Never</span></label>
+            <label><input type="radio" name="r4" value="1" data-k="r4"><span>A little</span></label>
+            <label><input type="radio" name="r4" value="2" data-k="r4"><span>Yes, for many years</span></label>
+          </div></div>
+        <div class="field"><span class="lbl">What matters more to you?</span>
+          <div class="seg">
+            <label><input type="radio" name="r5" value="0" data-k="r5"><span>Never seeing a loss</span></label>
+            <label><input type="radio" name="r5" value="1" data-k="r5"><span>Steady income with some growth</span></label>
+            <label><input type="radio" name="r5" value="2" data-k="r5"><span>Growth for later years and family</span></label>
+          </div></div>
+        <label class="toggle"><input type="checkbox" data-k="incomeOnly"> I want to live only on interest and never touch the principal</label>
+      </fieldset>
+
+      <fieldset class="wstep" data-step="7" hidden>
+        <legend>A few choices</legend>
+        <div class="field"><span class="lbl">Use part of savings to buy a lifelong pension (annuity)?</span>
+          <div class="seg">
+            <label><input type="radio" name="annuity" value="auto" data-k="annuity"><span>Suggest for me</span></label>
+            <label><input type="radio" name="annuity" value="yes" data-k="annuity"><span>Yes</span></label>
+            <label><input type="radio" name="annuity" value="no" data-k="annuity"><span>No</span></label>
+          </div></div>
+        <div class="field"><span class="lbl">Income tax regime</span>
+          <div class="seg"><label><input type="radio" name="regime" value="best" data-k="regime"><span>Pick the cheaper</span></label><label><input type="radio" name="regime" value="new" data-k="regime"><span>New</span></label><label><input type="radio" name="regime" value="old" data-k="regime"><span>Old</span></label></div>
+        </div>
+        <label class="toggle"><input type="checkbox" data-k="guard"> Cut spending by 10% in years after markets fall sharply (makes money last much longer)</label>
+        <details class="adv">
+          <summary>Assumptions you can change</summary>
+          <div class="row2">
+            <div class="field"><label for="infl">General inflation %</label><input type="number" id="infl" data-k="infl" step="0.5" min="2" max="12"></div>
+            <div class="field"><label for="medInfl">Medical inflation %</label><input type="number" id="medInfl" data-k="medInfl" step="0.5" min="4" max="16"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="eqRet">Equity return %</label><input type="number" id="eqRet" data-k="eqRet" step="0.5" min="4" max="16"></div>
+            <div class="field"><label for="fdRate">Senior FD rate %</label><input type="number" id="fdRate" data-k="fdRate" step="0.05"></div>
+          </div>
+          <div class="field"><label for="annRate">Annuity rate %</label><input type="number" id="annRate" data-k="annRate" step="0.1"></div>
+          <span class="hint">Government scheme rates are for October–December 2026: SCSS 8.2%, POMIS 7.4%, RBI floating rate bonds 8.05%. They are reviewed every quarter.</span>
+          <button type="button" class="btn ghost small" id="resetBtn" style="margin-top:12px">Clear my answers</button>
+        </details>
+      </fieldset>
+
+      
+    <div class="wfoot">
+      <button type="button" class="btn ghost" id="backBtn">Back</button>
+      <button type="button" class="btn" id="nextBtn">Next</button>
+    </div>
+  </form>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="flinks"><a href="index.html">Home</a><a href="plan.html">Enter my details</a><a href="results.html">My plan</a><a href="calculators.html">Calculators</a><a href="guides.html">Guides</a><a href="checklist.html">Checklist</a><a href="products.html">Products</a><a href="glossary.html">Word meanings</a><a href="about.html">How it works</a></div>
+    <p><b>Educational tool, not investment advice.</b> Nivrutti is not a SEBI-registered investment adviser. Market-linked returns are not guaranteed. Small savings rates are for October–December 2026 and change quarterly. NPS rules reflect PFRDA's December 2025 amendments. Tax figures are simplified FY 2026-27 estimates. Please confirm decisions with a SEBI-registered adviser and a chartered accountant.</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script src="assets/engine.js"></script>
+<script src="assets/render.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your monthly income — Nivrutti</title>
+<meta name="description" content="Retirement money planner for India.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="income">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">Nivrutti <small>retirement money planner</small></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main"><a href="index.html">Home</a><a href="results.html" aria-current="page">My plan</a><a href="calculators.html">Calculators</a><a href="guides.html">How-to guides</a><a href="checklist.html">Checklist</a><a href="products.html">Products</a><a href="glossary.html">Word meanings</a></nav>
+    <div class="tools" role="group" aria-label="Text size">
+      <button class="tbtn" data-fs="100" aria-pressed="true" aria-label="Normal text">A</button>
+      <button class="tbtn" data-fs="112.5" aria-pressed="false" aria-label="Larger text">A+</button>
+      <button class="tbtn" data-fs="125" aria-pressed="false" aria-label="Largest text">A++</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="wrap page-head">
+  <div class="headrow"><div><h1>Your monthly income</h1><p class="lede">Where each month's money comes from, now and over the years.</p><p class="hint" id="whoLine"></p></div>
+  <div class="acts"><a class="btn ghost small" href="plan.html" style="text-decoration:none;display:inline-flex;align-items:center">Edit my answers</a><button class="btn ghost small" data-print>Print for family</button></div></div>
+  <nav class="subnav" aria-label="Plan sections"><a href="results.html">Summary</a><a href="risk.html">Risk profile</a><a href="income.html" aria-current="page">Monthly income</a><a href="last.html">Will it last</a><a href="survivor.html">If one of us dies</a><a href="tax.html">Tax</a><a href="next-steps.html">What to do next</a></nav>
+  <div class="banner" id="banner" hidden><p>These results use example numbers. Enter your own details for a real plan.</p><a class="btn small" href="plan.html" style="text-decoration:none;display:inline-flex;align-items:center">Enter my details</a></div>
+</div>
+<div class="wrap"><div class="stack"><div class="panel card"><div class="card-h"><h2>The next 12 months</h2><p>Pension and interest arrive on their own dates. A monthly withdrawal (SWP) fills the rest.</p></div><div class="svgbox" id="cal"></div><div id="calNote"></div></div>
+<div class="panel card"><div class="card-h"><h2>Over the years</h2><p>In today's rupees. The shaded gap is what your savings pay.</p></div><div class="svgbox" id="flow"></div><div id="flowNote"></div></div></div></div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="flinks"><a href="index.html">Home</a><a href="plan.html">Enter my details</a><a href="results.html">My plan</a><a href="calculators.html">Calculators</a><a href="guides.html">Guides</a><a href="checklist.html">Checklist</a><a href="products.html">Products</a><a href="glossary.html">Word meanings</a><a href="about.html">How it works</a></div>
+    <p><b>Educational tool, not investment advice.</b> Nivrutti is not a SEBI-registered investment adviser. Market-linked returns are not guaranteed. Small savings rates are for October–December 2026 and change quarterly. NPS rules reflect PFRDA's December 2025 amendments. Tax figures are simplified FY 2026-27 estimates. Please confirm decisions with a SEBI-registered adviser and a chartered accountant.</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script src="assets/engine.js"></script>
+<script src="assets/render.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
